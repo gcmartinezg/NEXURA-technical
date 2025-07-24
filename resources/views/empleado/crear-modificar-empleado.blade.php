@@ -9,6 +9,22 @@
 @section('content')
     <h1 class="text-2xl font-bold mb-6">{{ $isEdit ? 'Editar empleado' : 'Crear empleado' }}</h1>
 
+    @if ($errors->any())
+        <div class="text-red-500 mb-4">
+            <ul>
+                @foreach ($errors->all() as $error)
+                    <li>• {{ $error }}</li>
+                @endforeach
+            </ul>
+        </div>
+    @endif
+
+    @if (session('success'))
+        <div class="mb-4 px-4 py-3 bg-green-100 text-green-800 rounded shadow text-sm">
+            {{ session('success') }}
+        </div>
+    @endif
+
     <form method="POST" action="{{ $isEdit ? route('employees.update', $employee->id): route('employees.store') }}"
         class="space-y-4 bg-white p-6 rounded shadow">
         @csrf
