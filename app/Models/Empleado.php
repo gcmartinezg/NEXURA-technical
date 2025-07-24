@@ -1,3 +1,5 @@
+<?php
+
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
@@ -16,6 +18,6 @@ class Empleado extends Model
 
     public function roles()
     {
-        return $this->belongsToMany(Role::class, 'empleado_roles');
+        return $this->belongsToMany(Rol::class, 'empleado_roles');
     }
 }
